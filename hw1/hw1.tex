@@ -165,7 +165,55 @@
 
                     \item Stochastic. There is randomess in the needs of the restaurant patrons, and the same person may not want the same thing every time.
 
-                    \item Episodic. Taking care of the needs on one patron should not affect others, though it could be argued that 
+                    \item Episodic. Taking care of the needs on one patron should not affect others, though it could be argued that it is sequential since serving a patron one part of their meal will make them want the next (appetizer, then entree, then possibly dessert).
+
+                    \item Dynamic. The needs of patrons can change or increase while the agent is thinking.
+
+                    \item Continuous states. It is the real world, so there are infinitely many places the robot server could be, but the orders and needs of the patrons could be argued to be discrete since the number of things offered by the restaurant are discrete.
+
+                    \item Continuous actions. The robot server can move its limbs at an infinite number of ways in the real world, move at an infinite number of different velocities, etc.
+
+                    \item Continuous time. In the real world, states change with the passing of time which is continuous.
+
+                    \item Known physics. The robot should be aware of the physics affecting it, which means it knows how to move its limbs and/or wheels in order to perform its desired actions.
+                \end{itemize}
+
+            \item \textbf{An intelligent coach that plays fantasy hockey. The coach must play in a league against other intelligent coaches, draft its team at the beginning of the season, determine which players should start or be benched each night, and potentially make trades during the season.}
+                \begin{itemize}
+                    \item Fully observable. The coach can see the stats of all the players before making the decisions for who to start/bench and who to trade.
+
+                    \item Stochastic. There is randomess in the outcome of the games which is out of control of the coach.
+
+                    \item Sequential. Making a certain move on a certain round affects following rounds. For example, if Player A was traded, it is no longer in the coach's possession to be traded in the following turns until it receives it again from another trade.
+
+                    \item Static. The coach thinks and executes its move every night before the games proceed.
+
+                    \item Discrete states. The states consist of the current player roster for each coach, which is a large, but infinite, number of states.
+
+                    \item Discrete actions. The coach decides between starting or benching a player, and whether to trade a player or not.
+
+                    \item Discrete time. The rounds take place every night during the season, and progresses by nights.
+
+                    \item Unknown dynamics. The coach cannot know the outcome of the game based on its decision to start/bench/trade players.
+                \end{itemize}
+
+            \item \textbf{An intelligent algorithm that predicts solar flares several days in advance. The algorithm must predict (a) whether or not a solar will occur; and (b) if so, its severity (class A, B, C, M, or X)}
+                \begin{itemize}
+                    \item Partially observable. If the environment is the current state of the sun, it is only possible to see approximately half of it using current tools (cannot see behind it).
+
+                    \item Stochastic. There is randomess in the chemical reactions within the sun that cannot be determined by the agent.
+
+                    \item Sequential. Making a certain move on a certain round affects following rounds. For example, if Player A was traded, it is no longer in the coach's possession to be traded in the following turns until it receives it again from another trade.
+
+                    \item Static. The coach thinks and executes its move every night before the games proceed.
+
+                    \item Discrete states. The states consist of the current player roster for each coach, which is a large, but infinite, number of states.
+
+                    \item Discrete actions. The coach decides between starting or benching a player, and whether to trade a player or not.
+
+                    \item Discrete time. The rounds take place every night during the season, and progresses by nights.
+
+                    \item Unknown dynamics. The coach cannot know the outcome of the game based on its decision to start/bench/trade players.
                 \end{itemize}
             \end{itemize}
         \end{enumerate}
