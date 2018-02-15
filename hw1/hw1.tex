@@ -1,156 +1,175 @@
 \documentclass{article}
 
-        \usepackage{fancyhdr}
-        \usepackage{extramarks}
-        \usepackage{amsmath}
-        \usepackage{amsthm}
-        \usepackage{amsfonts}
-        \usepackage{tikz}
-        \usepackage[plain]{algorithm}
-        \usepackage{algpseudocode}
+    \usepackage{fancyhdr}
+    \usepackage{extramarks}
+    \usepackage{amsmath}
+    \usepackage{amsthm}
+    \usepackage{amsfonts}
+    \usepackage{tikz}
+    \usepackage[plain]{algorithm}
+    \usepackage{algpseudocode}
+    
+    \usetikzlibrary{automata,positioning}
+    
+    %
+    % Basic Document Settings
+    %
+    
+    \topmargin=-0.45in
+    \evensidemargin=0in
+    \oddsidemargin=0in
+    \textwidth=6.5in
+    \textheight=9.0in
+    \headsep=0.25in
+    
+    \linespread{1.2}
+    
+    \pagestyle{fancy}
+    \lhead{\hmwkAuthorName}
+    \chead{\hmwkClass\ \hmwkTitle}
+    \rhead{\firstxmark}
+    \lfoot{\lastxmark}
+    \cfoot{\thepage}
+    
+    \renewcommand\headrulewidth{0.4pt}
+    \renewcommand\footrulewidth{0.4pt}
+    
+    \setlength\parindent{0pt}
+    \setlength\parskip{0.5cm}
+    
+    %
+    % Create Problem Sections
+    %
+    
+    \newcommand{\enterProblemHeader}[1]{
+        \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+        \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    }
+    
+    \newcommand{\exitProblemHeader}[1]{
+        \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+        \stepcounter{#1}
+        \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+    }
+    
+    \setcounter{secnumdepth}{0}
+    \newcounter{partCounter}
+    \newcounter{homeworkProblemCounter}
+    \setcounter{homeworkProblemCounter}{1}
+    \nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+    
+    %
+    % Homework Problem Environment
+    %
+    % This environment takes an optional argument. When given, it will adjust the
+    % problem counter. This is useful for when the problems given for your
+    % assignment aren't sequential. See the last 3 problems of this template for an
+    % example.
+    %
+    \newenvironment{homeworkProblem}[1][-1]{
+        \ifnum#1>0
+            \setcounter{homeworkProblemCounter}{#1}
+        \fi
+        \section{Problem \arabic{homeworkProblemCounter}}
+        \setcounter{partCounter}{1}
+        \enterProblemHeader{homeworkProblemCounter}
+    }{
+        \exitProblemHeader{homeworkProblemCounter}
+    }
+    
+    %
+    % Homework Details
+    %   - Title
+    %   - Due date
+    %   - Class
+    %   - Author
+    %
+    
+    \newcommand{\hmwkTitle}{Homework\ \#1}
+    \newcommand{\hmwkDueDate}{February 14, 2018}
+    \newcommand{\hmwkClass}{CS 4013}
+    \newcommand{\hmwkAuthorName}{\textbf{Christopher Tse}}
+    
+    %
+    % Title Page
+    %
+    
+    \title{
+        \vspace{2in}
+        \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+        \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+        \vspace{3in}
+    }
+    
+    \author{\hmwkAuthorName}
+    \date{}
+    
+    \renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+    
+    %
+    % Various Helper Commands
+    %
+    
+    % Useful for algorithms
+    \newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+    
+    % For derivatives
+    \newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+    
+    % For partial derivatives
+    \newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+    
+    % Integral dx
+    \newcommand{\dx}{\mathrm{d}x}
+    
+    % Alias for the Solution section header
+    \newcommand{\solution}{\textbf{\large Solution}}
+    
+    % Probability commands: Expectation, Variance, Covariance, Bias
+    \newcommand{\E}{\mathrm{E}}
+    \newcommand{\Var}{\mathrm{Var}}
+    \newcommand{\Cov}{\mathrm{Cov}}
+    \newcommand{\Bias}{\mathrm{Bias}}
+    
+    \begin{document}
+    
+    \maketitle
+    
+    \pagebreak
+    
+    \begin{homeworkProblem}
+        Characterize the environment for each of the following tasks, using the 9 properties listed. Justify each answer, ideally with one complete sentence.
         
-        \usetikzlibrary{automata,positioning}
-        
-        %
-        % Basic Document Settings
-        %
-        
-        \topmargin=-0.45in
-        \evensidemargin=0in
-        \oddsidemargin=0in
-        \textwidth=6.5in
-        \textheight=9.0in
-        \headsep=0.25in
-        
-        \linespread{1.2}
-        
-        \pagestyle{fancy}
-        \lhead{\hmwkAuthorName}
-        \chead{\hmwkClass\ \hmwkTitle}
-        \rhead{\firstxmark}
-        \lfoot{\lastxmark}
-        \cfoot{\thepage}
-        
-        \renewcommand\headrulewidth{0.4pt}
-        \renewcommand\footrulewidth{0.4pt}
-        
-        \setlength\parindent{0pt}
-        \setlength\parskip{0.5cm}
-        
-        %
-        % Create Problem Sections
-        %
-        
-        \newcommand{\enterProblemHeader}[1]{
-            \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
-            \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
-        }
-        
-        \newcommand{\exitProblemHeader}[1]{
-            \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
-            \stepcounter{#1}
-            \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
-        }
-        
-        \setcounter{secnumdepth}{0}
-        \newcounter{partCounter}
-        \newcounter{homeworkProblemCounter}
-        \setcounter{homeworkProblemCounter}{1}
-        \nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
-        
-        %
-        % Homework Problem Environment
-        %
-        % This environment takes an optional argument. When given, it will adjust the
-        % problem counter. This is useful for when the problems given for your
-        % assignment aren't sequential. See the last 3 problems of this template for an
-        % example.
-        %
-        \newenvironment{homeworkProblem}[1][-1]{
-            \ifnum#1>0
-                \setcounter{homeworkProblemCounter}{#1}
-            \fi
-            \section{Problem \arabic{homeworkProblemCounter}}
-            \setcounter{partCounter}{1}
-            \enterProblemHeader{homeworkProblemCounter}
-        }{
-            \exitProblemHeader{homeworkProblemCounter}
-        }
-        
-        %
-        % Homework Details
-        %   - Title
-        %   - Due date
-        %   - Class
-        %   - Author
-        %
-        
-        \newcommand{\hmwkTitle}{Homework\ \#1}
-        \newcommand{\hmwkDueDate}{February 14, 2018}
-        \newcommand{\hmwkClass}{CS 4013}
-        \newcommand{\hmwkAuthorName}{\textbf{Christopher Tse}}
-        
-        %
-        % Title Page
-        %
-        
-        \title{
-            \vspace{2in}
-            \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
-            \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
-            \vspace{3in}
-        }
-        
-        \author{\hmwkAuthorName}
-        \date{}
-        
-        \renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
-        
-        %
-        % Various Helper Commands
-        %
-        
-        % Useful for algorithms
-        \newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
-        
-        % For derivatives
-        \newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
-        
-        % For partial derivatives
-        \newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
-        
-        % Integral dx
-        \newcommand{\dx}{\mathrm{d}x}
-        
-        % Alias for the Solution section header
-        \newcommand{\solution}{\textbf{\large Solution}}
-        
-        % Probability commands: Expectation, Variance, Covariance, Bias
-        \newcommand{\E}{\mathrm{E}}
-        \newcommand{\Var}{\mathrm{Var}}
-        \newcommand{\Cov}{\mathrm{Cov}}
-        \newcommand{\Bias}{\mathrm{Bias}}
-        
-        \begin{document}
-        
-        \maketitle
-        
-        \pagebreak
-        
-        \begin{homeworkProblem}
-            Characterize the environment for each of the following tasks, using the 9 properties listed. Justify each answer, ideally with one complete sentence.
-            
-            \begin{enumerate}
-                \item \textbf{A “smart home” that autonomously controls the thermo-stat, humidifier, air-conditioner, lights, etc.}
+        \begin{enumerate}
+            \item \textbf{A “smart home” that autonomously controls the thermo-stat, humidifier, air-conditioner, lights, etc.}
                 \begin{itemize}
                     \item Partially observable. While it could be possible to make the system fully observable with enough sensors, realistically it will not be able to detect accurate readings for the entire home.
                     
                     \item Stochastic. There is randomness involved with changes in weather, humans affecting the environment by opening/closing doors, etc.
                     
-                    \item 
+                    \item Sequential. The actions the smart home decides to take now will affect future temperatures and environment conditions.
+
+                    \item Dynamic. The outside weather and human actions continually affect the environment as the agent thinks.
+
+                    \item Continuous states. We deal with real values, so there are infinitely many values each reading can measure. 
+
+                    \item Discrete actions. For the systems listed in the question, they all have two discrete states, being either on or off. While the air conditioner can be set to a range of values, it is usually a set of discrete integer temperature values.
+
+                    \item Continuous time. In the real world, states change with the passing of time which is continuous.
+
+                    \item Unknown physics. As far as the system is concerned, it is not aware of the physics and thermodynamics involved with controlling a home system. It only responds with an action based on the current state and the desired state. It could be argued that it is known physics since the system knows how each action will affect the environment.
                 \end{itemize}
-            \end{enumerate}
-            
-            
-        \end{homeworkProblem}
+            \item \textbf{A robotic restaurant server (e.g., waiter or waitress)}
+                \begin{itemize}
+                    \item Partially observable. The robot server cannot see or know everything going on in the restaurant, unless a restaurant-wide vision system was implemented using cameras mounted around the room.
+
+                    \item Stochastic. There is randomess in the needs of the restaurant patrons, and the same person may not want the same thing every time.
+
+                    \item Episodic. Taking care of the needs on one patron should not affect others, though it could be argued that 
+                \end{itemize}
+            \end{itemize}
+        \end{enumerate}
+        
+        
+    \end{homeworkProblem}
 \end{document}
