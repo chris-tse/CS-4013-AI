@@ -8,6 +8,7 @@
     \usepackage{tikz}
     \usepackage[plain]{algorithm}
     \usepackage{algpseudocode}
+    \usepackage{enumitem}
     
     \usetikzlibrary{automata,positioning}
     
@@ -140,7 +141,7 @@
     \begin{homeworkProblem}
         Characterize the environment for each of the following tasks, using the 9 properties listed. Justify each answer, ideally with one complete sentence.
         
-        \begin{enumerate}
+        \begin{enumerate}[label=(\alph*)]
             \item \textbf{A “smart home” that autonomously controls the thermo-stat, humidifier, air-conditioner, lights, etc.}
                 \begin{itemize}
                     \item Partially observable. While it could be possible to make the system fully observable with enough sensors, realistically it will not be able to detect accurate readings for the entire home.
@@ -203,21 +204,27 @@
 
                     \item Stochastic. There is randomess in the chemical reactions within the sun that cannot be determined by the agent.
 
-                    \item Sequential. Making a certain move on a certain round affects following rounds. For example, if Player A was traded, it is no longer in the coach's possession to be traded in the following turns until it receives it again from another trade.
+                    \item Episodic. Making a decision on whether a flare will happen and its severity does not affect the outcome of the next prediction.
 
-                    \item Static. The coach thinks and executes its move every night before the games proceed.
+                    \item Dynamic. The environment and reactions inside the sun are constantly changing while the agent makes its predictions.
 
-                    \item Discrete states. The states consist of the current player roster for each coach, which is a large, but infinite, number of states.
+                    \item Continuous states. The states of the reactions inside the sun are infinitely many depending on the positions and states of molecules inside the sun.
 
-                    \item Discrete actions. The coach decides between starting or benching a player, and whether to trade a player or not.
+                    \item Discrete actions. The agent makes a decision from a discrete number of choices (it will happen or not, and five discrete severity classes).
 
-                    \item Discrete time. The rounds take place every night during the season, and progresses by nights.
+                    \item Continous time. The state changes smoothly over time since it is in the real world.
 
-                    \item Unknown dynamics. The coach cannot know the outcome of the game based on its decision to start/bench/trade players.
+                    \item Known dynamics. The dynamics are mostly known since the agent should be programmed with what conditions cause flares, and should make its predictions based on those. 
                 \end{itemize}
             \end{itemize}
         \end{enumerate}
-        
-        
+    \end{homeworkProblem}
+
+    \pagebreak
+
+    \begin{homeworkProblem}
+        \begin{enumerate}
+            
+        \end{enumerate}
     \end{homeworkProblem}
 \end{document}
