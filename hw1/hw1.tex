@@ -216,15 +216,50 @@
 
                     \item Known dynamics. The dynamics are mostly known since the agent should be programmed with what conditions cause flares, and should make its predictions based on those. 
                 \end{itemize}
-            \end{itemize}
         \end{enumerate}
     \end{homeworkProblem}
 
     \pagebreak
 
     \begin{homeworkProblem}
-        \begin{enumerate}
-            
+        Define each of the following search problems, using the 5 com-ponents listed.
+        \begin{enumerate}[label=(\alph*)]
+            \item \textbf{Guess which playing cards your opponent is holding in their hand (you may assume a standard 52-card deck)}
+                \begin{itemize}
+                    \item Inital state: You do not know any of the cards the opponent is holding.
+                    
+                    \item Action set: Make a set of five guesses $g_1$ to $g_5$ on the cards the opponent is holding $c_1$ through $c_5$, determine whether the guess was correct. If $g_i$ matches $c_i$, mark card as correctly guessed. Keep track of all past guesses so as to not repeat a card in the guesses. For all non-correct guesses, retry guesses. Repeat until $g_1$ through $g_5$ are correct.
+                    
+                    \item Transition model: A transition model would give next possible guesses by removing the current guesses and previously guessed cards from the set of cards it has left to guess.
+                    
+                    \item Goal test: Are guesses $g_1$ to $g_5$ all correct? 
+                    
+                    \item Path cost: The path cost would be determined as the number of turns needed to to correctly guess all five cards in the opponent's hand.
+                \end{itemize}
+            \item Find the most comfortable empty chair in a room of 1 million chairs (some chairs already have people sitting on them, and you’re not allowed to remove the current occupant!)
+                \begin{itemize}
+                    \item Initial state: You have not found the most comfortable empty chair in the room.
+                    
+                    \item Action set: Assuming the state is modeled as a set of all chairs in the room, the initial action set would be to remove from the set the chairs that are occupied. Then for each attribute in the list attributes of a comfortable chair, filter out all chairs that do not meet those requirements. Once a set of chairs remains that meet all requirements of a "comfortable chair," try each of them and select the most comfortable one.
+                    
+                    \item Transition model: The transition model based on this modeling of state would be the resulting set of chairs after each time the filter is run for each attribute, and then later the a set of chairs with a comfort rating during sequential trying of chairs.
+                    
+                    \item Goal test: Is this chair the most comfortable in the room?
+                    
+                    \item Path cost: The path cost can be determined by the number of chairs tried before finding the most comfortable chair.
+                \end{itemize} 
+            \item It’s the middle of the night, and you’re hungry. Find the nearest Tim Horton’s that is still open. 
+                \begin{itemize}
+                    \item Initial state: You are not at a Tim Horton's that is open.
+                    
+                    \item Action set: The state could be modeled as a graph with intersections being the nodes. The action set would be taking some path attached to the current node to the next node. 
+                    
+                    \item Transition model: The transition model for this state representation would be showing which paths are available from the next node depending on which path is taken from the current node. 
+                    
+                    \item Goal test: Have we arrived at a Tim Horton's that is still open?
+                    
+                    \item Path cost: The path cost would be determined by the total distance traveled on the roads on the way to the destination.
+                \end{itemize}
         \end{enumerate}
     \end{homeworkProblem}
 \end{document}
